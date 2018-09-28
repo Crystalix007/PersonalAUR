@@ -75,7 +75,7 @@
 ** or whatever.  If you don't want any limit, comment this out, but that's
 ** probably a really bad idea.
 */
-#define CGI_TIMELIMIT 30
+//#define CGI_TIMELIMIT 30
 
 /* CONFIGURE: Maximum number of simultaneous CGI programs allowed.
 ** If this many are already running, then attempts to run more will
@@ -237,7 +237,7 @@
 ** initializing.  If this user (or the one specified by the -u flag) does
 ** not exist, the program will refuse to run.
 */
-#define DEFAULT_USER "nobody"
+#define DEFAULT_USER "thttpd"
 
 /* CONFIGURE: When started as root, the program can automatically chdir()
 ** to the home directory of the user specified by -u or DEFAULT_USER.
@@ -342,7 +342,7 @@
 ** individual directories by merely doing a "chmod 711" on them - the
 ** standard Unix file permission to allow file access but disable "ls".
 */
-#define GENERATE_INDEXES
+//#define GENERATE_INDEXES
 
 /* CONFIGURE: Whether to log unknown request headers.  Most sites will not
 ** want to log them, which will save them a bit of CPU time.
