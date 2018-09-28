@@ -1,0 +1,9 @@
+There are multiple licenses used for different files in this directory.
+
+For `thttp.h`:
+
+The modified BSD license prepended in the file itself.
+
+For `PKGBUILD` and `config`:
+
+The Unlicense as referred to in the parent directory.

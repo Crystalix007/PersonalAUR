@@ -1,0 +1,5 @@
+user=sthttpd
+cgipat=cgi-bin/*
+charset=utf-8
+chroot
+vhost
