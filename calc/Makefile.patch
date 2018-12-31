@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 44b250a..c402048 100644
+--- a/Makefile
++++ b/Makefile
+@@ -117,7 +117,7 @@ RPM_TOP= ${HOME}/rpm/calc
+ # compiler set #
+ ################
+ 
+-CCWERR= -Werror -Wextra -pedantic
++CCWERR= 
+ 
+ #################################
+ # clang -fsanitize test options #

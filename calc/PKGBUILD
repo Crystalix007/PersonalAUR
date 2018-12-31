@@ -1,0 +1,44 @@
+# Maintainer: Michael Kuc <michaelkuc6 at gmail dot com>
+# Contributor: Anthony G. Basile <blueness at gentoo dot org>
+
+pkgname=ccalc-git
+pkgver=2.12.7.2
+pkgrel=1
+epoch=
+pkgdesc="C-style arbitrary precision calculator"
+arch=('x86_64')
+url="https://github.com/lcn2/calc"
+license=('LGPL')
+groups=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=('ccalc')
+backup=()
+options=()
+changelog=
+source=("ccalc::git+https://github.com/lcn2/calc.git"
+		"Makefile.patch")
+noextract=()
+sha256sums=("SKIP"
+			"3c4dc59e8fca6d1b152d90d762afc399ee9705a3ae915bc9eeaa60bcf8606d8c")
+
+prepare() {
+	cd "$srcdir/ccalc/"
+	git apply ../Makefile.patch
+}
+
+build() {
+	cd "$srcdir/ccalc/"
+	make -j1 all
+}
+
+check() {
+	cd "$srcdir/ccalc/"
+	make check
+}
+
+package() {
+	cd "$srcdir/ccalc/"
+	make T="${pkgdir}/" install
+}
