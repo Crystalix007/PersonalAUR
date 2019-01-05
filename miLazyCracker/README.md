@@ -9,4 +9,4 @@ Alternatively, since I obtained my copy from a more thorough search of the inter
 If none of these are suitable, it is possible to modify this build script, and the sources to use an alternative Crypto-1 bitsliced brute-forcer.
 
 ## How to install
-makepkg --install
+`makepkg --install`
