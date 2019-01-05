@@ -1,8 +1,8 @@
 # miLazyCracker
-AUR-like automated build script for `nfc-tools/miLazyChacker` for `pacman` based distributions.
+AUR-like automated build script for `nfc-tools/miLazyCracker` for `pacman` based distributions.
 
 ## Perculiarities
-Note that this build is not entirely automated. One must obtain the source-code libraries `craptev1-v1.1.tar.xz` and `crapto1-v3.3.tar.xz`. These were originally available at [original site](http://crapto1.netgarage.org/), [archive.org mirror](https://web.archive.org/web/20180317133525/http://crapto1.netgarage.org).  
+Note that this build is not entirely automated. One must obtain the source-code libraries `craptev1-v1.1.tar.xz` and `crapto1-v3.3.tar.xz`. These were originally available at [original site](http://crapto1.netgarage.org/), [archive.org mirror](https://web.archive.org/web/20180317133525/http://crapto1.netgarage.org). These should be placed inside the `src/miLazyCracker` directory.  
 Since the license of these libraries restricts redistribution, it cannot be given freely. Instead, it is recommended that one ask the original producer at `blapost at gmail dot com`.  
 Alternatively, since I obtained my copy from a more thorough search of the internet, you can probably get it this way too.
 
