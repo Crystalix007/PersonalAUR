@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 71058f0..1b5ab4b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -170,8 +170,7 @@ target_link_libraries(matrix_client
+                       OpenSSL::Crypto
+                       OpenSSL::SSL
+                       Olm::Olm
+-                      ZLIB::ZLIB
+-                      nlohmann_json::nlohmann_json)
++                      ZLIB::ZLIB)
+ 
+ if(NOT MSVC AND NOT APPLE)
+   target_link_libraries(matrix_client PUBLIC Threads::Threads)
