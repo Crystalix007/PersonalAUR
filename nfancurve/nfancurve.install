@@ -1,0 +1,19 @@
+# Colored makepkg-like functions
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    note "You can edit the config file to use nfancurve, at /etc/nfancurve/config."
+    note "The example config can also be found at /usr/share/doc/nfancurve/config.sh.example"
+		note "You can also copy the desktop file from /usr/share/applications/nfancurve.desktop to your local autostart folder (most likely \"\$HOME/.config/autostart/\")"
+}
+
+post_upgrade() {
+    post_install
+}

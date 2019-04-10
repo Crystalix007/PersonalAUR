@@ -1,0 +1,5 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=nan0s7's fan curve script
+Type=Application
+Exec=/usr/bin/nfancurve -c /etc/nfancurve/config
