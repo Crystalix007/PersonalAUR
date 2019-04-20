@@ -1,0 +1,43 @@
+_pkgname="RE-flex"
+pkgname="${_pkgname}-git"
+pkgver=v1.1.5.r0.ge901cdd
+pkgrel=2
+pkgdesc="The regex-centric, fast and flexible scanner generator for C++"
+arch=('x86_64')
+url="https://github.com/Genivia/RE-flex"
+license=('BSD')
+depends=()
+provides=('RE-flex')
+conflicts=()
+optdepends=('graphviz: To visualize the FSM graphs generated with reflex option '"'"'--graphs-file'"'"
+			'boost: To use Boost.Regex as a regex engine with the RE/flex library and scanner generator')
+epoch=1
+source=(git+https://github.com/Genivia/RE-flex.git)
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${_pkgname}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "${_pkgname}"
+	autoreconf -fi
+	./configure --mandir=/usr/share/man/
+}
+
+build() {
+	cd "${_pkgname}"
+	make
+}
+
+check() {
+	: #Do nothing
+}
+
+package() {
+	cd "${_pkgname}"
+	make PREFIX=/usr DESTDIR="${pkgdir}/" install
+	install -m644 -D LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+	install -m644 -D README.md "$pkgdir/usr/share/doc/$pkgname/README"
+}

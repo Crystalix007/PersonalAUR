@@ -1,5 +1,5 @@
 pkgname=mtxclient-git
-pkgver=v0.2.0.r24.g5422d28
+pkgver=v0.2.0.r32.g6f7b35a
 pkgrel=1
 pkgdesc="Client API library for Matrix, built on top of Boost.Asio"
 arch=('x86_64' 'i686')
