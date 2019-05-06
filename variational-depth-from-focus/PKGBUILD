@@ -1,0 +1,36 @@
+_pkgname=variational-depth-from-focus
+pkgname="${_pkgname}-git"
+pkgver=v1.0.0.r13.gb2a4bc3
+pkgrel=1
+pkgdesc="Implementation of \"Variational Depth from Focus Reconstruction\" [Moeller 2015]"
+arch=('x86_64')
+url="https://github.com/Crystalix007/variational-depth-from-focus"
+license=('GPL2')
+depends=('opencv'
+				'cmake'
+				'cuda')
+provides=('variational-depth-from-focus')
+epoch=1
+source=("${pkgname}::git+https://github.com/Crystalix007/variational-depth-from-focus.git")
+sha256sums=("SKIP")
+
+pkgver() {
+	cd "${pkgname}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "${pkgname}"
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+}
+
+build() {
+	cd "${pkgname}"
+	make
+}
+
+package() {
+	cd "${pkgname}"
+	make PREFIX=/usr DESTDIR="$pkgdir/" install
+	install -m644 -D README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
