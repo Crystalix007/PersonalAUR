@@ -1,6 +1,6 @@
 _pkgname=variational-depth-from-focus
 pkgname="${_pkgname}-git"
-pkgver=v1.0.0.r13.gb2a4bc3
+pkgver=v1.0.0.r15.g56422fb
 pkgrel=1
 pkgdesc="Implementation of \"Variational Depth from Focus Reconstruction\" [Moeller 2015]"
 arch=('x86_64')
