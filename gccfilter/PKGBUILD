@@ -1,0 +1,28 @@
+# Maintainer: Michael Kuc <michaelkuc6 at gmail dot com>
+pkgname=gccfilter
+pkgver=1.0
+pkgrel=1
+pkgdesc="A filter for gcc diagnostic messages."
+arch=('any')
+url="https://github.com/Crystalix007/"
+license=(GPL3)
+depends=('perl'
+	'perl-getopt-argvfile'
+	'perl-regexp-common')
+epoch=1
+source=('http://www.mixtion.org/gccfilter/gccfilter'
+	'http://www.mixtion.org/gccfilter/gccfilter.html')
+
+check() {
+	cd "$srcdir"
+	chmod +x gccfilter
+	./gccfilter
+}
+
+package() {
+	install -m755 -D "$srcdir/gccfilter" "$pkgdir/usr/bin/$pkgname"
+	install -m644 -D "$srcdir/gccfilter.html" "$pkgdir/usr/share/doc/$pkgname/README.html"
+}
+
+sha256sums=('32878e5443c0dec63f64352ab6c0968329a614e951473319b7eb33b6b89b5a3a'
+	'32a779c57bcf21d3853f9b05d393697394f4881014e5a2e87412357fd662fe04')
