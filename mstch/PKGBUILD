@@ -1,0 +1,33 @@
+# Maintainer: Jitang Zheng <jitang.zheng@gmail.com>
+pkgname=mstch
+pkgver=1.0.2r6996d59
+pkgrel=1
+pkgdesc="mstch is a complete implementation of {{mustache}} templates using modern C++"
+arch=('x86_64' 'i686')
+url="https://github.com/torbjoernk/mstch"
+license=('MIT')
+depends=("boost")
+makedepends=('cmake')
+source=("$pkgname-$pkgver::git+https://github.com/torbjoernk/mstch.git#branch=develop")
+md5sums=('SKIP')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  git submodule init
+  git submodule update
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr .
+  make
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  make install
+}
