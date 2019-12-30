@@ -1,0 +1,9 @@
+post_install() {
+  groupadd -r wheel
+  udevadm control -R
+  udevadm trigger
+  echo "Add yourself to 'wheel' group."
+  echo "# gpasswd -a <USER> wheel"
+  echo "You may need to restart X server."
+}
+
