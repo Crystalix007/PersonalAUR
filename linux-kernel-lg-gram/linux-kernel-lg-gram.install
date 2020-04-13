@@ -1,0 +1,4 @@
+post_install() {
+	VER=$(uname -r)
+	depmod -a ${VER}
+}

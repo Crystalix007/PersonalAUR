@@ -1,0 +1,37 @@
+pkgname="linux-kernel-lg-gram"
+pkgver=0.4
+pkgrel=1
+pkgdesc="LG Gram kernel module"
+arch=('x86_64')
+url=""
+license=('GPL2')
+depends=()
+provides=()
+conflicts=()
+epoch=1
+source=('lg-laptop.c'
+	'Makefile')
+install="${pkgname}.install"
+
+sha512sums=('8d72fef77aed95e32bb49955de25e51ee976904b622742d9cc278bfa5f14d579f06d270f0cc9a36404575885c173a807136ff48d59d748b30a3c3cbfb7016d4e'
+	'6467ccbbfdf77b8bf032ce4138eecbc081e4f704c6c1442a5357b032c164b1a860f905fa1f0bcf926598162ee40e0e9208c6ef9095b545895df4ec68646c9bc2')
+
+prepare() {
+	cd "${_pkgname}"
+}
+
+build() {
+	cd "${_pkgname}"
+	make PREFIX=/usr
+}
+
+check() {
+	: #Do nothing
+}
+
+package() {
+	cd "${_pkgname}"
+	make DESTDIR="${pkgdir}/" PREFIX=/usr install
+}
+
+
