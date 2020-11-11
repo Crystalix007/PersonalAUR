@@ -1,0 +1,14 @@
+pkgname=rtl8761a-fw
+pkgver=20200816
+pkgrel=1
+pkgdesc="Realtek bluetooth firmware for RTL8761A based devices"
+arch=('any')
+url="https://github.com/Realtek-OpenSource/android_hardware_realtek"
+license=('unknown')
+source=("https://raw.githubusercontent.com/Realtek-OpenSource/android_hardware_realtek/rtk1395/bt/rtkbt/Firmware/BT/rtl8761a_config")
+sha512sums=('SKIP')
+
+package() {
+    install -Dm644 rtl8761a_config "$pkgdir/usr/lib/firmware/rtl_bt/rtl8761a_config.bin"
+}
+
