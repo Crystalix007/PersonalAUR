@@ -1,0 +1,49 @@
+# Previous Maintainer: Martchus <martchus@gmx.net>
+# Maintainer: Michael Kuc <michaelkuc6 at gmail dot com>
+
+pkgname=pistache-git
+_name=${pkgname%-git}
+pkgver=1406.0c68278
+pkgrel=1
+arch=('i686' 'x86_64')
+pkgdesc='Modern and elegant HTTP and REST framework for C++'
+license=('APACHE')
+depends=('openssl' 'rapidjson')
+makedepends=('meson' 'git' 'doxygen' 'gtest' )
+checkdepends=('gtest')
+provides=("${_name}")
+conflicts=("${_name}")
+options=(staticlibs)
+url="https://github.com/pistacheio/${_name}"
+source=("${_name}::git://github.com/pistacheio/${_name}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_name}"
+  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${srcdir}/${_name}"
+
+	meson setup build \
+		--buildtype=release \
+		-DPISTACHE_USE_SSL=true \
+		-DPISTACHE_BUILD_EXAMPLES=true \
+		-DPISTACHE_BUILD_TESTS=true \
+		-DPISTACHE_BUILD_DOCS=false \
+		--wipe \
+		--prefix="/usr/"
+
+	meson compile -C build
+}
+
+check() {
+  cd "${srcdir}/${_name}"
+  meson test -C build
+}
+
+package() {
+  cd "${srcdir}/${_name}"
+  DESTDIR="${pkgdir}/" meson install -C build
+}
