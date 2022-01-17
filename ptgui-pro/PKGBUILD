@@ -1,0 +1,20 @@
+# Maintainer: michaelkuc6 <michaelkuc6 at gmail dot com>
+pkgname="ptgui-pro"
+pkgver=12.9
+pkgrel=1
+pkgdesc="PTGui is panoramic image stitching software for Windows, macOS and Linux."
+arch=('x86_64')
+url="https://www.ptgui.com/"
+license=('custom')
+depends=()
+makedepends=()
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+source=("PTGui_Pro_12.9.tar.gz")
+sha256sums=('c8c6d234f9b7ad0c187654d2b04fc4d84aefe40afc3ba179501476d495bf4227')
+
+package() {
+	cd "${srcdir}"
+	install -m755 -d "${pkgdir}/opt/PTGui-Pro"
+	cp -r . "${pkgdir}/opt/PTGui-Pro"
+}
